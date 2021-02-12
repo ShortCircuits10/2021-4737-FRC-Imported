@@ -17,10 +17,10 @@ public class RobotMap {
 
   // For example to map the left and right motors, you could define the
   // following variables to use with your drivetrain subsystem.
-   public static int leftMotor = 1;
-   public static int rightMotor = 2;
-   public static int leftbackMotor = 3;
-   public static int rightbackMotor = 4;
+  public static int RIGHT_FRONT_MOTOR = 1;
+  public static int RIGHT_BACK_MOTOR = 2;
+  public static int LEFT_FRONT_MOTOR = 3;
+  public static int LEFT_BACK_MOTOR = 4;
    public static int motor =0;
 
   // If you are using multiple modules, make sure to define both the port
