@@ -11,6 +11,8 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import frc.robot.Drivetrain.drivetrain;
+
 
 
 /*
@@ -22,7 +24,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends TimedRobot {
 	
- 
+  public static drivetrain DRIVETRAIN = new drivetrain();
   
   public static OI OI;
 
@@ -30,6 +32,8 @@ public class Robot extends TimedRobot {
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
+
+
 
   /**
    * This function is run when the robot is first started up and should be
