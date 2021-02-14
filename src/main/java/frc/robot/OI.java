@@ -7,33 +7,39 @@
 
 package frc.robot;
 
-/*import edu.wpi.first.wpilibj.buttons.Trigger;
-import frc.libs.F310Gamepad;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
+///import frc.libs.F310Gamepad;
 import frc.libs.XboxController;
-import frc.robot.Drivetrain.commands.*;
-*/
+import frc.robot.Drivetrain.commands.TeleOpRaceDrive;
+
 
 
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
-//public XboxController driver;
-//public XboxController operator;
+
 
 public class OI {
-  //driver = new XboxController(0);
-  //operator = new XboxController(2);
 
-  // Driver code
-  /*new Trigger() {
+  public XboxController driver;
+  public XboxController operator;
+  public OI(){
+
+  
+  driver = new XboxController(0);
+  operator = new XboxController(2);
+
+   //Driver code
+   
+  new Trigger() {
     public boolean get() {
       if (Robot.getInstance() == null)
         return false;
       return (driver.LT.get() != 0 || driver.RT.get() != 0 || driver.LS.X.get() != 0);
     }
-  }.whileActive(new TeleOpRaceDrive());
-  */
+  }.whenActive(new TeleOpRaceDrive());
+  
 
   //// CREATING BUTTONS
   // One type of button is a joystick button which is any button on a
@@ -62,6 +68,7 @@ public class OI {
   // Start the command when the button is released and let it run the command
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
+}
 
 }
   

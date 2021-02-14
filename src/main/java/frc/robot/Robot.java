@@ -10,6 +10,8 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.ScheduleCommand;
+import edu.wpi.first.wpilibj2.command.Command;
 
 import frc.robot.Drivetrain.drivetrain;
 
@@ -23,17 +25,25 @@ import frc.robot.Drivetrain.drivetrain;
  * project.
  */
 public class Robot extends TimedRobot {
-	
+  
+  private static Robot instance = null;
+
+  public static Robot getInstance() {
+    return instance;
+  }
   public static drivetrain DRIVETRAIN = new drivetrain();
   
   public static OI OI;
+  
 
   private static final String kDefaultAuto = "Default";
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
+  private Command autonomousCommand;
+  
 
-
+ 
 
   /**
    * This function is run when the robot is first started up and should be
@@ -47,6 +57,11 @@ public class Robot extends TimedRobot {
     OI = new OI();
   }
 
+  public Robot() {
+    instance = this;
+  }
+
+
   /*
    * This function is called every robot packet, no matter the mode. Use
    * this for items like diagnostics that you want ran during disabled,
@@ -57,6 +72,10 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+  }
+  @Override
+  public void disabledPeriodic() {
+    //ScheduleCommand.getInstance().run();
   }
 
   /**
@@ -90,6 +109,7 @@ public class Robot extends TimedRobot {
       default:
         // Put default auto code here
         break;
+        //ScheduleCommand.getInstance().run();
     }
   }
 
@@ -98,6 +118,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
+    //ScheduleCommand.getInstance().run();
   }
 
   /**

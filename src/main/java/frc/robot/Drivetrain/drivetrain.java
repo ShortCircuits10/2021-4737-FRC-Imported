@@ -9,6 +9,8 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import frc.robot.RobotMap;
 import frc.robot.Drivetrain.commands.DisableTeleOpDrive;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
+import frc.libs.JerkLimitedTalonSRXController;
 
 
 public class drivetrain extends SubsystemBase {
@@ -20,6 +22,11 @@ public class drivetrain extends SubsystemBase {
   public WPI_TalonSRX leftbackmotor;
   public DifferentialDrive drive;
 
+  
+  private JerkLimitedTalonSRXController lSmoothDrive;
+  private JerkLimitedTalonSRXController rSmoothDrive;
+  private DifferentialDrive smoothDrive;
+
   public drivetrain() {
     rightfrontmotor = new WPI_TalonSRX(RobotMap.RIGHT_FRONT_MOTOR);
     rightbackmotor = new WPI_TalonSRX(RobotMap.RIGHT_BACK_MOTOR);
@@ -27,6 +34,11 @@ public class drivetrain extends SubsystemBase {
     leftbackmotor = new WPI_TalonSRX(RobotMap.LEFT_BACK_MOTOR);
 
     drive = new DifferentialDrive(rightbackmotor, rightfrontmotor);
+
+
+    smoothDrive = new DifferentialDrive(
+      lSmoothDrive = new JerkLimitedTalonSRXController(leftfrontmotor, RobotMap.DRIVE_MAX_VEL, RobotMap.DRIVE_MAX_ACCEL, RobotMap.DRIVE_MAX_JERK),
+      rSmoothDrive = new JerkLimitedTalonSRXController(rightfrontmotor, RobotMap.DRIVE_MAX_VEL, RobotMap.DRIVE_MAX_ACCEL, RobotMap.DRIVE_MAX_JERK));
   }
 
 
@@ -38,6 +50,18 @@ public class drivetrain extends SubsystemBase {
 
   public void arcadeDrive(double throttle, double steer){
     drive.arcadeDrive(throttle, steer);
+  }
+
+  public void setAccelerationLimit(double accelLimit) {
+    lSmoothDrive.setMaxAccel(accelLimit);
+    rSmoothDrive.setMaxAccel(accelLimit);
+  }
+
+  public void setBrakeMode() {
+		leftfrontmotor.setNeutralMode(NeutralMode.Brake);
+		leftbackmotor.setNeutralMode(NeutralMode.Brake);
+		rightfrontmotor.setNeutralMode(NeutralMode.Brake);
+		rightbackmotor.setNeutralMode(NeutralMode.Brake);
   }
 
   public void initDefaultCommand() {

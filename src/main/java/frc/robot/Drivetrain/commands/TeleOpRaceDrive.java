@@ -10,6 +10,8 @@ package frc.robot.Drivetrain.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
+import frc.robot.Drivetrain.drivetrain;
+import frc.libs.JerkLimitedTalonSRXController;
 
 public class TeleOpRaceDrive extends CommandBase {
   /**
@@ -29,7 +31,7 @@ public class TeleOpRaceDrive extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    /*
+    
 		boolean slow = Robot.OI.driver.getButton("LB").get();
 		boolean slowAccel = Robot.OI.driver.getButton("RB").get();
 		boolean disableAccel = Robot.OI.driver.getButton("A").get();
@@ -47,7 +49,7 @@ public class TeleOpRaceDrive extends CommandBase {
 				* (slow ? RobotMap.DRIVE_SLOW_SCALE : 1);
 
 		double steer = Robot.OI.driver.getThumbstick("LS").X.get() * (slow ? RobotMap.DRIVE_SLOW_SCALE : 1);
-    */
+    
 		
 
 		//Robot.DRIVETRAIN.arcadeDrive(throttle, steer);

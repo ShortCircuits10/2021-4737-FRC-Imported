@@ -21,7 +21,17 @@ public class RobotMap {
   public static int RIGHT_BACK_MOTOR = 2;
   public static int LEFT_FRONT_MOTOR = 3;
   public static int LEFT_BACK_MOTOR = 4;
-   public static int motor =0;
+
+  
+  //Fun Constants
+  public static final double DRIVE_SLOW_SCALE = 0.5;
+  public static final double DRIVE_MAX_SCALE = 200;
+
+  public static final double DRIVE_MAX_VEL = 1;
+  public static final double DRIVE_MAX_ACCEL = 25;
+  public static final double DRIVE_MAX_JERK = 80;
+  
+  public static final double DRIVE_MAX_ACCEL_SLOW = 5;
 
   // If you are using multiple modules, make sure to define both the port
   // number and the module. For example you with a rangefinder:

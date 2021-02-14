@@ -27,7 +27,7 @@ public class TeleOpDrive extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    //Robot.DRIVETRAIN.arcadeDrive(Robot.OI.driver.LS.Y.get(), Robot.OI.driver.LS.X.get());
+    Robot.DRIVETRAIN.arcadeDrive(Robot.OI.driver.LS.Y.get(), Robot.OI.driver.LS.X.get());
   }
 
   // Called once the command ends or is interrupted.
