@@ -7,7 +7,11 @@
 
 package frc.robot;
 
-
+//import frc.libs.Gamepad;
+import frc.libs.XboxController;
+import frc.robot.Intake.commands.ExtendIntake;
+import frc.robot.Intake.commands.ReverseIntake;
+import frc.robot.Intake.commands.TeleOpIntake;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -41,6 +45,15 @@ public class OI {
   // Start the command when the button is released and let it run the command
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
+  public XboxController driver;
+  public XboxController operator;
+  public OI(){
+    driver = new XboxController(0);
+    operator = new XboxController(2);
+
+    operator.B.whileHeld(new ExtendIntake(), true);
+    operator.X.whileHeld(new ExtendIntake(), false);
+  }
 
 }
   
