@@ -53,6 +53,8 @@ public class OI {
 
     operator.B.whileHeld(new ExtendIntake(), true);
     operator.X.whileHeld(new ExtendIntake(), false);
+    operator.A.whileHeld(new TeleOpIntake());
+    operator.Y.whileHeld(new ReverseIntake());
   }
 
 }

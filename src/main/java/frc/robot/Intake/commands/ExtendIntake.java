@@ -21,9 +21,9 @@ public class ExtendIntake extends CommandBase {
   @Override
   public void initialize() {
     if(extended){
-      Robot.INTAKE.extendleft();
+      Robot.INTAKE.extend();
     } else {
-      Robot.INTAKE.retractleft();
+      Robot.INTAKE.retract();
     }
   }
 

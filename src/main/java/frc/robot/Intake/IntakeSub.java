@@ -18,28 +18,38 @@ import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 public class IntakeSub extends SubsystemBase {
   /** Creates a new IntakeSub. */
   public DoubleSolenoid leftintakesSolenoid;
+ // public DoubleSolenoid rightintakeSolenoid;
+
   public static WPI_TalonSRX intakemotor;
-  //public SingleSolenoid leftintakesSolenoid;
+ // public static WPI_TalonSRX intakemotor2;
+
 
   public IntakeSub() {
     leftintakesSolenoid = new DoubleSolenoid(RobotMap.INTAKESOLENOID_FOWARDCHANNEL, RobotMap.INTAKESOLENOID_REVERSECHANNEL);
+    //rightintakeSolenoid = new DoubleSolenoid(RobotMap.BOTTOMSOLENOID_FORWARDCHANNEL, RobotMap.BOTTOMSOLENOID_REVERSECHANNEL);
+    
     intakemotor = new WPI_TalonSRX(RobotMap.INTAKE_MOTOR);
+   // intakemotor2 = new WPI_TalonSRX(RobotMap.INTAKE_MOTOR2);
   }
 
   public void setSpeed(double speed){
-  
+    intakemotor.set(speed);
+    //intakemotor2.set(speed);
   }
 
-  public void extendleft() {
+  public void extend() {
     leftintakesSolenoid.set(Value.kForward);
+    //rightintakeSolenoid.set(Value.kForward);
   }
 
-  public void retractleft(){
+  public void retract(){
     leftintakesSolenoid.set(Value.kReverse);
+    //rightintakeSolenoid.set(Value.kReverse);
   }
 
   public void disablePneumatics(){
     leftintakesSolenoid.set(Value.kOff);
+    //rightintakeSolenoid.set(Value.kOff);
   }
 
   @Override
