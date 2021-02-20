@@ -30,7 +30,8 @@ public class RobotMap {
   public static int INTAKE_MOTOR = 6;
 
   // extra motors
-  //public static int INTAKE_MOTOR2 = 7;
+  public static int INTAKE_MOTOR2 = 7;
+  public static int INTAKE_MOTOR3 = 8;
 
   //Pnuematics
   public static int INTAKESOLENOID_FOWARDCHANNEL  = 0;

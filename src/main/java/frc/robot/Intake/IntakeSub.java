@@ -21,7 +21,8 @@ public class IntakeSub extends SubsystemBase {
  // public DoubleSolenoid rightintakeSolenoid;
 
   public static WPI_TalonSRX intakemotor;
- // public static WPI_TalonSRX intakemotor2;
+  public static WPI_TalonSRX ballintakemotor;
+  public static WPI_TalonSRX elevatorintakemotor;
 
 
   public IntakeSub() {
@@ -29,12 +30,14 @@ public class IntakeSub extends SubsystemBase {
     //rightintakeSolenoid = new DoubleSolenoid(RobotMap.BOTTOMSOLENOID_FORWARDCHANNEL, RobotMap.BOTTOMSOLENOID_REVERSECHANNEL);
     
     intakemotor = new WPI_TalonSRX(RobotMap.INTAKE_MOTOR);
-   // intakemotor2 = new WPI_TalonSRX(RobotMap.INTAKE_MOTOR2);
+    ballintakemotor = new WPI_TalonSRX(RobotMap.INTAKE_MOTOR2);
+    elevatorintakemotor = new WPI_TalonSRX(RobotMap.INTAKE_MOTOR3);
   }
 
   public void setSpeed(double speed){
     intakemotor.set(speed);
-    //intakemotor2.set(speed);
+    ballintakemotor.set(speed);
+    elevatorintakemotor.set(speed);
   }
 
   public void extend() {
