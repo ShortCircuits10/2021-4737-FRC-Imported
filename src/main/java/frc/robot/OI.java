@@ -7,6 +7,11 @@
 
 package frc.robot;
 
+import frc.libs.XboxController;
+
+import frc.robot.Shooter.commands.DisableShooter;
+import frc.robot.Shooter.commands.Shooter;
+import frc.robot.Shooter.commands.ReverseShooter;
 
 
 /**
@@ -14,6 +19,16 @@ package frc.robot;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
+  public XboxController driver;
+  public XboxController operator;
+  
+  public OI(){
+    driver = new XboxController(0);
+    operator = new XboxController(1);
+
+    operator.A.whenPressed(new Shooter());
+    operator.B.whenPressed(new ReverseShooter());
+   operator.X.whenPressed(new DisableShooter());
   //// CREATING BUTTONS
   // One type of button is a joystick button which is any button on a
   //// joystick.
@@ -44,4 +59,4 @@ public class OI {
 
 }
   
-
+}
