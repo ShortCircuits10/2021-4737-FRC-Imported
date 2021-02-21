@@ -59,9 +59,9 @@ public class OI {
     operator = new XboxController(2);
 
 
-    operator.A.whileHeld(new ReverseBallIntake());
-    operator.Y.whileHeld(new ReverseIntake());
-    operator.X.whileHeld(new ReverseElevator());
+    operator.DPAD.RIGHT.whileHeld(new ReverseBallIntake());
+    operator.DPAD.UP.whileHeld(new ReverseIntake());
+    operator.DPAD.LEFT.whileHeld(new ReverseElevator());
    
     new Trigger() {
       public boolean get() {
