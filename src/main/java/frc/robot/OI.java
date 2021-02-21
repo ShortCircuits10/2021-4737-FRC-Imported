@@ -9,9 +9,16 @@ package frc.robot;
 
 //import frc.libs.Gamepad;
 import frc.libs.XboxController;
-import frc.robot.Intake.commands.ExtendIntake;
+
 import frc.robot.Intake.commands.ReverseIntake;
+import frc.robot.Intake.commands.TeleOpBallIntake;
 import frc.robot.Intake.commands.TeleOpIntake;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
+//import frc.robot.Intake.IntakeSub;
+import frc.robot.Intake.commands.TeleOpElevator;
+import frc.robot.Intake.commands.ReverseBallIntake;
+import frc.robot.Intake.commands.ReverseElevator;
+
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -51,10 +58,38 @@ public class OI {
     driver = new XboxController(0);
     operator = new XboxController(2);
 
-    operator.B.whileHeld(new ExtendIntake(), true);
-    operator.X.whileHeld(new ExtendIntake(), false);
-    operator.A.whileHeld(new TeleOpIntake());
+
+    operator.A.whileHeld(new ReverseBallIntake());
     operator.Y.whileHeld(new ReverseIntake());
+    operator.X.whileHeld(new ReverseElevator());
+   
+    new Trigger() {
+      public boolean get() {
+        if (Robot.INTAKE == null)
+          return false;
+        return (operator.RT.get() != 0 || operator.LT.get() != 0);
+      }
+    }.whenActive(new TeleOpIntake());
+
+    new Trigger() {
+      public boolean get() {
+        if (Robot.INTAKE == null)
+          return false;
+        return (operator.LS.X.get() != 0);
+      }
+    }.whenActive(new TeleOpBallIntake());
+
+    new Trigger() {
+      public boolean get() {
+        if (Robot.INTAKE == null)
+          return false;
+        return (operator.RS.X.get() != 0);
+      }
+    }.whenActive(new TeleOpElevator());
+
+
+
+
   }
 
 }

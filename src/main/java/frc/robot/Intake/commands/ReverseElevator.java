@@ -7,9 +7,9 @@ package frc.robot.Intake.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
-public class ReverseIntake extends CommandBase {
-  /** Creates a new ReverseTeleOpIntake. */
-  public ReverseIntake() {
+public class ReverseElevator extends CommandBase {
+  /** Creates a new ReverseElevator. */
+  public ReverseElevator() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.INTAKE);
   }
@@ -21,7 +21,7 @@ public class ReverseIntake extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Robot.INTAKE.setIntakeSpeed(-1);
+    Robot.INTAKE.setelevatorSpeed(-1);
   }
 
   // Called once the command ends or is interrupted.

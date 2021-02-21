@@ -7,30 +7,21 @@ package frc.robot.Intake.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
-public class ExtendIntake extends CommandBase {
-  /** Creates a new ExtendIntake. */
-  private boolean extended;
-  public ExtendIntake() {
+public class ReverseBallIntake extends CommandBase {
+  /** Creates a new ReverseBallIntake. */
+  public ReverseBallIntake() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.INTAKE);
-
-    //this.extended = extended;
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
-    if(extended){
-      Robot.INTAKE.extend();
-    } else {
-      Robot.INTAKE.retract();
-    }
-  }
+  public void initialize() {}
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-
+    Robot.INTAKE.setballintakemotorSpeed(-1);
   }
 
   // Called once the command ends or is interrupted.

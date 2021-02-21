@@ -10,15 +10,13 @@ import frc.robot.Intake.commands.DisableIntake;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+
 //import edu.wpi.first.wpilibj.Solenoid;
 
 
 public class IntakeSub extends SubsystemBase {
   /** Creates a new IntakeSub. */
-  public DoubleSolenoid leftintakesSolenoid;
- // public DoubleSolenoid rightintakeSolenoid;
+  
 
   public static WPI_TalonSRX intakemotor;
   public static WPI_TalonSRX ballintakemotor;
@@ -26,34 +24,33 @@ public class IntakeSub extends SubsystemBase {
 
 
   public IntakeSub() {
-    leftintakesSolenoid = new DoubleSolenoid(RobotMap.INTAKESOLENOID_FOWARDCHANNEL, RobotMap.INTAKESOLENOID_REVERSECHANNEL);
-    //rightintakeSolenoid = new DoubleSolenoid(RobotMap.BOTTOMSOLENOID_FORWARDCHANNEL, RobotMap.BOTTOMSOLENOID_REVERSECHANNEL);
+  
     
     intakemotor = new WPI_TalonSRX(RobotMap.INTAKE_MOTOR);
     ballintakemotor = new WPI_TalonSRX(RobotMap.INTAKE_MOTOR2);
     elevatorintakemotor = new WPI_TalonSRX(RobotMap.INTAKE_MOTOR3);
   }
 
-  public void setSpeed(double speed){
+  public void setIntakeSpeed(double speed){
     intakemotor.set(speed);
     ballintakemotor.set(speed);
     elevatorintakemotor.set(speed);
   }
 
-  public void extend() {
-    leftintakesSolenoid.set(Value.kForward);
-    //rightintakeSolenoid.set(Value.kForward);
+  public void setballintakemotorSpeed(double speed){
+
+    ballintakemotor.set(speed);
+
   }
 
-  public void retract(){
-    leftintakesSolenoid.set(Value.kReverse);
-    //rightintakeSolenoid.set(Value.kReverse);
+  public void setelevatorSpeed(double speed){
+
+    elevatorintakemotor.set(speed);
+
   }
 
-  public void disablePneumatics(){
-    leftintakesSolenoid.set(Value.kOff);
-    //rightintakeSolenoid.set(Value.kOff);
-  }
+
+
 
   @Override
   public void periodic() {

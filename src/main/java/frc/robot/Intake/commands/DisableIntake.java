@@ -21,8 +21,9 @@ public class DisableIntake extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Robot.INTAKE.disablePneumatics();
-    Robot.INTAKE.setSpeed(0);
+    Robot.INTAKE.setIntakeSpeed(0);
+    Robot.INTAKE.setballintakemotorSpeed(0);
+    Robot.INTAKE.setelevatorSpeed(0);
   }
 
   // Called once the command ends or is interrupted.
